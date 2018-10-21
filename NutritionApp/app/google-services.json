@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "419368562633",
+    "firebase_url": "https://nutriapp-508a7.firebaseio.com",
+    "project_id": "nutriapp-508a7",
+    "storage_bucket": "nutriapp-508a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419368562633:android:3214efafb89c3d12",
+        "android_client_info": {
+          "package_name": "com.example.alfredo.nutritionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419368562633-tdjg6r1du85qvrkape77cr2s3jjq6jkq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alfredo.nutritionapp",
+            "certificate_hash": "181596c3d06eb96fcc553f4cce96e3821d4889ae"
+          }
+        },
+        {
+          "client_id": "419368562633-8rvftv8jgnn8c2b6ir1b2f8f1kq01ses.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkziAL1VWJoCfgA6WVCBb0VzOQ--WtcFo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419368562633-8rvftv8jgnn8c2b6ir1b2f8f1kq01ses.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
