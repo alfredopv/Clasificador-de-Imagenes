@@ -1,0 +1,1900 @@
+{
+  "comida": [
+    {
+      "Platillo": "Hamburguesa estandar",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Pan",
+          "Cantidad": "1 pza",
+          "PS": 4.6,
+          "LP": 2.5,
+          "HC": 28.2,
+          "HCsimples": "",
+          "Kcal totales": 154
+        },
+        {
+          "Ingrediente": "Carne de res molida",
+          "Cantidad": "90 g",
+          "PS": 18,
+          "LP": 9,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 153
+        },
+        {
+          "Ingrediente": "Lechuga",
+          "Cantidad": "7.5 g",
+          "PS": 0.08,
+          "LP": 0.02,
+          "HC": 0.22,
+          "HCsimples": "",
+          "Kcal totales": 1.5
+        },
+        {
+          "Ingrediente": "Jitomate",
+          "Cantidad": "40 g",
+          "PS": 0.33,
+          "LP": 0.06,
+          "HC": 1.4,
+          "HCsimples": "",
+          "Kcal totales": 6.5
+        },
+        {
+          "Ingrediente": "Cebolla",
+          "Cantidad": "6.4 g",
+          "PS": 0.06,
+          "LP": 0.011,
+          "HC": 0.6,
+          "HCsimples": "",
+          "Kcal totales": 2.5
+        },
+        {
+          "Ingrediente": "Queso Amarillo",
+          "Cantidad": "20 g",
+          "PS": 3.5,
+          "LP": 3,
+          "HC": 2.5,
+          "HCsimples": "",
+          "Kcal totales": 50
+        },
+        {
+          "Ingrediente": "Mayonesa",
+          "Cantidad": "5 g",
+          "PS": 0.1,
+          "LP": 3.6,
+          "HC": 0.2,
+          "HCsimples": "",
+          "Kcal totales": 34
+        },
+        {
+          "Ingrediente": "Catsup",
+          "Cantidad": "9 g",
+          "PS": 0.15,
+          "LP": 0.03,
+          "HC": 2.3,
+          "HCsimples": 2,
+          "Kcal totales": 10
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 411.5
+    },
+    {
+      "Platillo": "Hamburguesa MC de res con queso",
+      "Marca": "McDonald's",
+      "Ingredientes": "",
+      "Cantidad": "155 g",
+      "PS": 15,
+      "LP": 14,
+      "HC": 35,
+      "HCsimples": "",
+      "Kcal totales": 326
+    },
+    {
+      "Platillo": "Hamburguesa Mc Pollo",
+      "Marca": "McDonald's",
+      "Ingredientes": "",
+      "Cantidad": "190 g",
+      "PS": 14,
+      "LP": 19,
+      "HC": 43,
+      "HCsimples": "",
+      "Kcal totales": 400
+    },
+    {
+      "Platillo": "Hamburguesa MC de res con queso",
+      "Marca": "Burger King",
+      "Ingredientes": "",
+      "Cantidad": "123 g",
+      "PS": 11,
+      "LP": 15,
+      "HC": 40.2,
+      "HCsimples": "",
+      "Kcal totales": 340
+    },
+    {
+      "Platillo": "Hamburguesa Krispy Chicken con queso",
+      "Marca": "Burger King",
+      "Ingredientes": "",
+      "Cantidad": "182 g",
+      "PS": 16.4,
+      "LP": 29.5,
+      "HC": 42.2,
+      "HCsimples": "",
+      "Kcal totales": 440
+    },
+    {
+      "Platillo": "Hamburguesa Famous Star",
+      "Marca": "Carl's Jr.",
+      "Ingredientes": "",
+      "Cantidad": "284 g",
+      "PS": 28,
+      "LP": 30,
+      "HC": 53,
+      "HCsimples": "",
+      "Kcal totales": 590
+    },
+    {
+      "Platillo": "Hamburguesa Big Chicken Fillet",
+      "Marca": "Carl's Jr.",
+      "Ingredientes": "",
+      "Cantidad": "288 g",
+      "PS": 33,
+      "LP": 33,
+      "HC": 55,
+      "HCsimples": "",
+      "Kcal totales": 650
+    },
+    {
+      "Platillo": "Pay de manzana",
+      "Marca": "Krispy Kreme",
+      "Ingredientes": "",
+      "Cantidad": "113 g",
+      "PS": 2.99,
+      "LP": 17,
+      "HC": 60,
+      "HCsimples": 31,
+      "Kcal totales": 400
+    },
+    {
+      "Platillo": "Pay de manzana",
+      "Marca": "Wal Mart",
+      "Ingredientes": "",
+      "Cantidad": "122 g",
+      "PS": 2,
+      "LP": 18,
+      "HC": 45.99,
+      "HCsimples": 23,
+      "Kcal totales": 350
+    },
+    {
+      "Platillo": "Pay de manzana estandar",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "40 g",
+      "PS": 0.8,
+      "LP": 4.4,
+      "HC": 13.6,
+      "HCsimples": "",
+      "Kcal totales": 95
+    },
+    {
+      "Platillo": "Pay de manzana",
+      "Marca": "Bimbo",
+      "Ingredientes": "",
+      "Cantidad": "113 g",
+      "PS": 2.99,
+      "LP": 17,
+      "HC": 61,
+      "HCsimples": 30,
+      "Kcal totales": 400
+    },
+    {
+      "Platillo": "Pay de manzana",
+      "Marca": "Mc Cain Foods",
+      "Ingredientes": "",
+      "Cantidad": "113 g",
+      "PS": 2.99,
+      "LP": 21,
+      "HC": 41,
+      "HCsimples": 17,
+      "Kcal totales": 360
+    },
+    {
+      "Platillo": "Pizza de queso pan corteza rebanada",
+      "Marca": "Pizza Hut",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 11.73,
+      "LP": 12.56,
+      "HC": 29.93,
+      "HCsimples": 3.21,
+      "Kcal totales": 280
+    },
+    {
+      "Platillo": "Pizza de pepperoni pan corteza rebanada",
+      "Marca": "Pizza Hut",
+      "Ingredientes": "",
+      "Cantidad": "96 g",
+      "PS": 11.49,
+      "LP": 13.64,
+      "HC": 29.27,
+      "HCsimples": 3.07,
+      "Kcal totales": 298
+    },
+    {
+      "Platillo": "Pizza de salchicha pan corteza rebanada",
+      "Marca": "Pizza Hut",
+      "Ingredientes": "",
+      "Cantidad": "125 g",
+      "PS": 13.85,
+      "LP": 17.31,
+      "HC": 36.95,
+      "HCsimples": 2.27,
+      "Kcal totales": 359,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de queso, corteza delgada  rebanada",
+      "Marca": "Pizza Hut",
+      "Ingredientes": "",
+      "Cantidad": "69 g",
+      "PS": 10.55,
+      "LP": 9.73,
+      "HC": 19.76,
+      "HCsimples": "",
+      "Kcal totales": 209,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de pepperoni, corteza delgada rebanada",
+      "Marca": "Pizza Hut",
+      "Ingredientes": "",
+      "Cantidad": "80 g",
+      "PS": 11.3,
+      "LP": 12.94,
+      "HC": 26.13,
+      "HCsimples": "",
+      "Kcal totales": 266,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de salchicha, corteza delgada rebanada",
+      "Marca": "Pizza Hut",
+      "Ingredientes": "",
+      "Cantidad": "80 g",
+      "PS": 11.3,
+      "LP": 12.94,
+      "HC": 26.13,
+      "HCsimples": "",
+      "Kcal totales": 266,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de queso, corteza delgada  rebanada",
+      "Marca": "Domino's",
+      "Ingredientes": "",
+      "Cantidad": "70 g",
+      "PS": 8.63,
+      "LP": 10.57,
+      "HC": 19.73,
+      "HCsimples": "",
+      "Kcal totales": 209,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de pepperoni, corteza delgada  rebanada ",
+      "Marca": "Domino's",
+      "Ingredientes": "",
+      "Cantidad": "79 g",
+      "PS": 10.97,
+      "LP": 15.05,
+      "HC": 20.03,
+      "HCsimples": "",
+      "Kcal totales": 259,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de salchicha, corteza delgada  rebanada",
+      "Marca": "Domino's",
+      "Ingredientes": "",
+      "Cantidad": "78 g",
+      "PS": 9.96,
+      "LP": 14.45,
+      "HC": 19.73,
+      "HCsimples": "",
+      "Kcal totales": 249,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de queso, corteza clasica hecha a mano ",
+      "Marca": "Domino's",
+      "Ingredientes": "",
+      "Cantidad": "108 g",
+      "PS": 11.66,
+      "LP": 9.69,
+      "HC": 35.9,
+      "HCsimples": 4.34,
+      "Kcal totales": 278,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de queso, corteza clasica rebanada",
+      "Marca": "Papa John's",
+      "Ingredientes": "",
+      "Cantidad": "117 g",
+      "PS": 13.49,
+      "LP": 10.82,
+      "HC": 38.31,
+      "HCsimples": 6.22,
+      "Kcal totales": 304,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza de pepperoni, corteza clasica rebanada ",
+      "Marca": "Papa John's",
+      "Ingredientes": "",
+      "Cantidad": "123 g",
+      "PS": 14.72,
+      "LP": 14.59,
+      "HC": 36.95,
+      "HCsimples": 5.95,
+      "Kcal totales": 338,
+      "": ""
+    },
+    {
+      "Platillo": "Pizza The Works corteza clasica rebanada",
+      "Marca": "Papa John's",
+      "Ingredientes": "",
+      "Cantidad": "153 g",
+      "PS": 15.71,
+      "LP": 15.62,
+      "HC": 40.84,
+      "HCsimples": 7.41,
+      "Kcal totales": 367,
+      "": ""
+    },
+    {
+      "Platillo": "Salmon crudo",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 22.25,
+      "LP": 4.69,
+      "HC": 0,
+      "HCsimples": "",
+      "Kcal totales": 131,
+      "": ""
+    },
+    {
+      "Platillo": "Salmon ahumado",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 18.28,
+      "LP": 4.32,
+      "HC": 0,
+      "HCsimples": "",
+      "Kcal totales": 117,
+      "": ""
+    },
+    {
+      "Platillo": "Teriyaki salmon presazonado (filete) ",
+      "Marca": "Atlantic salmon fillets",
+      "Ingredientes": "",
+      "Cantidad": "140 g",
+      "PS": 24,
+      "LP": 16,
+      "HC": 7.99,
+      "HCsimples": 6.01,
+      "Kcal totales": 280,
+      "": ""
+    },
+    {
+      "Platillo": "Sandwich estandar",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Platillo": "Pan de caja 2 pzas",
+          "Cantidad": "54 g",
+          "PS": 4.4,
+          "LP": 1.6,
+          "HC": 27.2,
+          "HCsimples": "",
+          "Kcal totales": 71,
+          "": ""
+        },
+        {
+          "Ingrediente": "Jamon de pavo rebanada",
+          "Cantidad": "21 g",
+          "PS": 4,
+          "LP": 1.05,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 27
+        },
+        {
+          "Ingrediente": "Jamon de cerdo rebanada",
+          "Cantidad": "21 g",
+          "PS": 4.66,
+          "LP": 5.33,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 67
+        },
+        {
+          "Ingrediente": "Queso manchego rebanada",
+          "Cantidad": "25 g",
+          "PS": 6.1,
+          "LP": 8.1,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 102
+        },
+        {
+          "Ingrediente": "Queso panela rebanada",
+          "Cantidad": "40 g",
+          "PS": 6.1,
+          "LP": 2.8,
+          "HC": 2,
+          "HCsimples": "",
+          "Kcal totales": 58
+        },
+        {
+          "Ingrediente": "Queso oaxaca",
+          "Cantidad": "30 g",
+          "PS": 7.7,
+          "LP": 6.6,
+          "HC": 0.9,
+          "HCsimples": "",
+          "Kcal totales": 95
+        },
+        {
+          "Ingrediente": "Mayonesa cucharadita",
+          "Cantidad": "5 g",
+          "PS": 0.1,
+          "LP": 3.6,
+          "HC": 0.2,
+          "HCsimples": "",
+          "Kcal totales": 34
+        },
+        {
+          "Ingrediente": "Lechuga hoja",
+          "Cantidad": "10 g",
+          "PS": 0.12,
+          "LP": 0.02,
+          "HC": 0.33,
+          "HCsimples": "",
+          "Kcal totales": 1.7
+        },
+        {
+          "Ingrediente": "Jitomate rodaja",
+          "Cantidad": "12 g",
+          "PS": 0.1,
+          "LP": 0.01,
+          "HC": 0.46,
+          "HCsimples": "",
+          "Kcal totales": 2.12
+        },
+        {
+          "Ingrediente": "Aguacate rebanada",
+          "Cantidad": "10 g",
+          "PS": 0.22,
+          "LP": 1.7,
+          "HC": 0.67,
+          "HCsimples": "",
+          "Kcal totales": 18
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": "",
+      "": ""
+    },
+    {
+      "Platillo": "Sandwich de atun",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Pan de caja 2 pzas",
+          "Cantidad": "54 g",
+          "PS": 4,
+          "LP": 0,
+          "HC": 30,
+          "HCsimples": "",
+          "Kcal totales": 140,
+          "": ""
+        },
+        {
+          "Ingrediente": "Atun en agua lata",
+          "Cantidad": "99 g",
+          "PS": 25.5,
+          "LP": 0.9,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 117
+        },
+        {
+          "Ingrediente": "Queso manchego rebanada",
+          "Cantidad": "25 g",
+          "PS": 6.1,
+          "LP": 8.1,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 102
+        },
+        {
+          "Ingrediente": "Queso panela rebanada",
+          "Cantidad": "40 g",
+          "PS": 6.1,
+          "LP": 2.8,
+          "HC": 2,
+          "HCsimples": "",
+          "Kcal totales": 58,
+          "": ""
+        },
+        {
+          "Ingrediente": "Queso oaxaca",
+          "Cantidad": "30 g",
+          "PS": 7.7,
+          "LP": 6.6,
+          "HC": 0.9,
+          "HCsimples": "",
+          "Kcal totales": 95,
+          "": ""
+        },
+        {
+          "Ingrediente": "Mayonesa cucharadita",
+          "Cantidad": "5 g",
+          "PS": 0.1,
+          "LP": 3.6,
+          "HC": 0.2,
+          "HCsimples": "",
+          "Kcal totales": 34,
+          "": ""
+        },
+        {
+          "Ingrediente": "Lechuga hoja",
+          "Cantidad": "10 g",
+          "PS": 0.12,
+          "LP": 0.02,
+          "HC": 0.33,
+          "HCsimples": "",
+          "Kcal totales": 1.7,
+          "": ""
+        },
+        {
+          "Ingrediente": "Jitomate rodaja",
+          "Cantidad": "12 g",
+          "PS": 0.1,
+          "LP": 0.01,
+          "HC": 0.46,
+          "HCsimples": "",
+          "Kcal totales": 2.12,
+          "": ""
+        },
+        {
+          "Ingrediente": "Aguacate rebanado",
+          "Cantidad": "10 g",
+          "PS": 0.22,
+          "LP": 1.7,
+          "HC": 0.67,
+          "HCsimples": "",
+          "Kcal totales": 18,
+          "": ""
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": "",
+      "": ""
+    },
+    {
+      "Platillo": "Spaghetti con carne molida y salsa (taza) ",
+      "Marca": "Denny's",
+      "Ingredientes": "",
+      "Cantidad": "134 g",
+      "PS": 10.51,
+      "LP": 11.42,
+      "HC": 20.78,
+      "HCsimples": "",
+      "Kcal totales": 228,
+      "": ""
+    },
+    {
+      "Platillo": "Spaghetti con salsa de tomate (Barilla)",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 12.5,
+      "LP": 1.79,
+      "HC": 75,
+      "HCsimples": 3.57,
+      "Kcal totales": 357,
+      "": ""
+    },
+    {
+      "Platillo": "Sushi rollo california",
+      "Marca": " Moji",
+      "Ingredientes": "",
+      "Cantidad": "21.25 g",
+      "PS": 0.62,
+      "LP": 1,
+      "HC": 3.8,
+      "HCsimples": "",
+      "Kcal totales": 26,
+      "": ""
+    },
+    {
+      "Platillo": "Sushi rollo primavera ",
+      "Marca": "Moji",
+      "Ingredientes": "",
+      "Cantidad": "21.25 g",
+      "PS": 0.64,
+      "LP": 0.64,
+      "HC": 5.95,
+      "HCsimples": "",
+      "Kcal totales": 32,
+      "": ""
+    },
+    {
+      "Platillo": "Sushi rollo california con vegetales ",
+      "Marca": "Moji",
+      "Ingredientes": "",
+      "Cantidad": "34 g",
+      "PS": 1,
+      "LP": 0.33,
+      "HC": 5,
+      "HCsimples": "",
+      "Kcal totales": 27,
+      "": ""
+    },
+    {
+      "Platillo": "Taco de pollo",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Tortilla de maiz pza",
+          "Cantidad": "30 g",
+          "PS": 1.4,
+          "LP": 0.5,
+          "HC": 13.6,
+          "HCsimples": "",
+          "Kcal totales": 64
+        },
+        {
+          "Ingrediente": "Pollo",
+          "Cantidad": "50 g",
+          "PS": 14.5,
+          "LP": 2,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 80
+        },
+        {
+          "Ingrediente": "Aceite cucharadita",
+          "Cantidad": "5 g",
+          "PS": 0,
+          "LP": 5,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 44
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 188
+    },
+    {
+      "Platillo": "Taco de bistec",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Tortilla de maiz pza",
+          "Cantidad": "30 g",
+          "PS": 1.4,
+          "LP": 0.5,
+          "HC": 13.6,
+          "HCsimples": "",
+          "Kcal totales": 64
+        },
+        {
+          "Ingrediente": "Bistec",
+          "Cantidad": "50 g",
+          "PS": 12,
+          "LP": 1.33,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 60,
+          "": ""
+        },
+        {
+          "Ingrediente": "Aceite cucharadita",
+          "Cantidad": "5 g",
+          "PS": 0,
+          "LP": 5,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 44,
+          "": ""
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 168
+    },
+    {
+      "Platillo": "Taco de suadero",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Tortilla de maiz pza",
+          "Cantidad": "30 g",
+          "PS": 1.4,
+          "LP": 0.5,
+          "HC": 13.6,
+          "HCsimples": "",
+          "Kcal totales": 64
+        },
+        {
+          "Ingrediente": "Suadero",
+          "Cantidad": "50 g",
+          "PS": 13,
+          "LP": 8,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 127
+        },
+        {
+          "Ingrediente": "Aceite cucharadita",
+          "Cantidad": "5 g",
+          "PS": 0,
+          "LP": 5,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 44
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 235,
+      "": ""
+    },
+    {
+      "Platillo": "Waffle estandar pza",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "35 g",
+      "PS": 2.3,
+      "LP": 3.4,
+      "HC": 15.1,
+      "HCsimples": 1.8,
+      "Kcal totales": 100,
+      "": ""
+    },
+    {
+      "Platillo": "Waffle con mantequilla pza",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "35 g",
+      "PS": 2.3,
+      "LP": 3.8,
+      "HC": 13.9,
+      "HCsimples": 1,
+      "Kcal totales": 97,
+      "": ""
+    },
+    {
+      "Platillo": "Waffle integral pza",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "35 g",
+      "PS": 2.3,
+      "LP": 2.9,
+      "HC": 13.2,
+      "HCsimples": 1.3,
+      "Kcal totales": 84,
+      "": ""
+    },
+    {
+      "Platillo": "Waffle miniatura pza",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "20 g",
+      "PS": 1.5,
+      "LP": 1.95,
+      "HC": 8.15,
+      "HCsimples": 0.3,
+      "Kcal totales": 56,
+      "": ""
+    },
+    {
+      "Platillo": "Nachos con queso",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Totopos para nachos",
+          "Cantidad": "120 g",
+          "PS": 9.6,
+          "LP": 24,
+          "HC": 72,
+          "HCsimples": "",
+          "Kcal totales": 552,
+          "": ""
+        },
+        {
+          "Ingrediente": "Queso cheddar",
+          "Cantidad": "56 g",
+          "PS": 14,
+          "LP": 16,
+          "HC": "",
+          "HCsimples": "",
+          "Kcal totales": 200
+        },
+        {
+          "Ingrediente": "Chiles jalapeños",
+          "Cantidad": "90 g",
+          "PS": 2,
+          "LP": "",
+          "HC": 4,
+          "HCsimples": "",
+          "Kcal totales": 25
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 777,
+      "": ""
+    },
+    {
+      "Platillo": "Nuggets",
+      "Marca": " Burger King",
+      "Ingredientes": "10 piezas",
+      "Cantidad": "200g",
+      "PS": 32,
+      "LP": 8,
+      "HC": 30,
+      "HCsimples": "",
+      "Kcal totales": 320,
+      "": ""
+    },
+    {
+      "Platillo": "Nuggets",
+      "Marca": "McDonald's",
+      "Ingredientes": "10 piezas",
+      "Cantidad": "200 g",
+      "PS": 30,
+      "LP": 34,
+      "HC": 30,
+      "HCsimples": "",
+      "Kcal totales": 546,
+      "": ""
+    },
+    {
+      "Platillo": "Paella",
+      "Marca": "",
+      "Ingredientes": "1 Porcion promedio",
+      "Cantidad": "300 g",
+      "PS": 15.8,
+      "LP": 17.6,
+      "HC": 51.1,
+      "HCsimples": "",
+      "Kcal totales": 423,
+      "": ""
+    },
+    {
+      "Platillo": "Palomitas de maiz",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": "",
+      "": ""
+    },
+    {
+      "Platillo": "Palomitas de mantequilla",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "336 g",
+      "PS": 16,
+      "LP": 50,
+      "HC": 140,
+      "HCsimples": "",
+      "Kcal totales": 1074,
+      "": ""
+    },
+    {
+      "Platillo": "Palomitas garapiñadas",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "300 g",
+      "PS": 10,
+      "LP": 5,
+      "HC": 240,
+      "HCsimples": 110,
+      "Kcal totales": 1000,
+      "": ""
+    },
+    {
+      "Platillo": "Papas a la francesa",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "117g",
+      "PS": 4,
+      "LP": 18,
+      "HC": 50,
+      "HCsimples": "",
+      "Kcal totales": 378,
+      "": ""
+    },
+    {
+      "Platillo": "Pastel de fresa",
+      "Marca": "",
+      "Ingredientes": "1 rebanada promedio",
+      "Cantidad": "50 g",
+      "PS": 1.31,
+      "LP": 8.55,
+      "HC": 26.98,
+      "HCsimples": 16.4,
+      "Kcal totales": 184,
+      "": ""
+    },
+    {
+      "Platillo": "Pastel de queso",
+      "Marca": "",
+      "Ingredientes": "1 rebanada promedio",
+      "Cantidad": "76 g",
+      "PS": 5.32,
+      "LP": 11.55,
+      "HC": 33.67,
+      "HCsimples": "",
+      "Kcal totales": 258,
+      "": ""
+    },
+    {
+      "Platillo": "Tiramisu",
+      "Marca": "",
+      "Ingredientes": "1 rebanada promedio",
+      "Cantidad": "57 g",
+      "PS": 3,
+      "LP": 12,
+      "HC": 18,
+      "HCsimples": 10,
+      "Kcal totales": 190,
+      "": ""
+    },
+    {
+      "Platillo": "Filete de pescado empanizado",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 22,
+      "LP": 25,
+      "HC": 7.5,
+      "HCsimples": "",
+      "Kcal totales": 343,
+      "": ""
+    },
+    {
+      "Platillo": "Pescado entero",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Aceite",
+          "Cantidad": "30g",
+          "PS": "",
+          "LP": 30,
+          "HC": "",
+          "HCsimples": "",
+          "Kcal totales": "",
+          "": ""
+        },
+        {
+          "Ingrediente": "Facula de maiz",
+          "Cantidad": "7.5g",
+          "PS": 1,
+          "LP": "",
+          "HC": 7,
+          "HCsimples": "",
+          "Kcal totales": "",
+          "": ""
+        }
+      ],
+      "Cantidad": "130g",
+      "PS": 23,
+      "LP": "3,3",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": "",
+      "": ""
+    },
+    {
+      "Platillo": "Hot cakes estandar",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Miel de abeja",
+          "Cantidad": "10 g",
+          "PS": 0,
+          "LP": 0,
+          "HC": 11,
+          "HCsimples": 11,
+          "Kcal totales": 44
+        },
+        {
+          "Ingrediente": "Mantequilla",
+          "Cantidad": "5 g",
+          "PS": 0,
+          "LP": 4,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 36
+        },
+        {
+          "Ingrediente": "Mermelada",
+          "Cantidad": "10 g",
+          "PS": 0.06,
+          "LP": 0,
+          "HC": 6,
+          "HCsimples": 4.8,
+          "Kcal totales": 24
+        },
+        {
+          "Ingrediente": "Harina para hot cake",
+          "Cantidad": "50 g",
+          "PS": 2.4,
+          "LP": 1.2,
+          "HC": 12.6,
+          "HCsimples": 4.7,
+          "Kcal totales": 71
+        }
+      ],
+      "Cantidad": "50 g",
+      "PS": 3.4,
+      "LP": 3,
+      "HC": 13,
+      "HCsimples": "",
+      "Kcal totales": 104,
+      "": ""
+    },
+    {
+      "Platillo": "Hot dog estandar",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Pan para hot dog",
+          "Cantidad": "1 pza",
+          "PS": 4,
+          "LP": 2,
+          "HC": 21,
+          "HCsimples": 3,
+          "Kcal totales": 118
+        },
+        {
+          "Platillo": "Salchicha de pierna",
+          "Cantidad": "1 pza",
+          "PS": 8.8,
+          "LP": 12.8,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 150
+        },
+        {
+          "Ingrediente": "Jitomate",
+          "Cantidad": "15 g",
+          "PS": 0.06,
+          "LP": 0.01,
+          "HC": 0.26,
+          "HCsimples": "",
+          "Kcal totales": 1.2
+        },
+        {
+          "Ingrediente": "Cebolla",
+          "Marca": "",
+          "Ingredientes": "Cebolla",
+          "Cantidad": "12.5 g",
+          "PS": 0.12,
+          "LP": 0.021,
+          "HC": 1.1,
+          "HCsimples": "",
+          "Kcal totales": 4.5
+        },
+        {
+          "Ingrediente": "Catsup",
+          "Cantidad": "9 g",
+          "PS": 0.15,
+          "LP": 0.03,
+          "HC": 2.3,
+          "HCsimples": 2,
+          "Kcal totales": 10
+        },
+        {
+          "Ingrediente": "Mostaza",
+          "Cantidad": "9 g",
+          "PS": 0.6,
+          "LP": 0.6,
+          "HC": 0.6,
+          "HCsimples": "",
+          "Kcal totales": 10
+        },
+        {
+          "Ingrediente": "Mayonesa",
+          "Cantidad": "5 g",
+          "PS": 0.1,
+          "LP": 3.6,
+          "HC": 0.2,
+          "HCsimples": "",
+          "Kcal totales": 34
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 327.7,
+      "": ""
+    },
+    {
+      "Platillo": "Huevo revuelto",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Huevo blanco",
+          "Cantidad": "2 pzas",
+          "PS": 11,
+          "LP": 8.8,
+          "HC": 0.6,
+          "HCsimples": "",
+          "Kcal totales": 126
+        },
+        {
+          "Ingrediente": "Jamon",
+          "Cantidad": "2 rebanadas",
+          "PS": 8.1,
+          "LP": 2.1,
+          "HC": 0.5,
+          "HCsimples": "",
+          "Kcal totales": 56,
+          "": ""
+        },
+        {
+          "Platillo": "Salchicha",
+          "Cantidad": "1 pieza (45g)",
+          "PS": 8.8,
+          "LP": 12.8,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 150
+        },
+        {
+          "Platillo": "Tocino",
+          "Cantidad": "15 g",
+          "PS": 1.4,
+          "LP": 9.2,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 88
+        },
+        {
+          "Platillo": "Frijoles",
+          "Cantidad": "150 g",
+          "PS": 8.2,
+          "LP": 8,
+          "HC": 22.6,
+          "HCsimples": "",
+          "Kcal totales": 195
+        },
+        {
+          "Platillo": "Espinaca",
+          "Cantidad": "45 g",
+          "PS": 1.3,
+          "LP": 0.1,
+          "HC": 1.6,
+          "HCsimples": "",
+          "Kcal totales": 13
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 628,
+      "": ""
+    },
+    {
+      "Platillo": "Lasagna",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Molida de res",
+          "Cantidad": "60 g",
+          "PS": 12.4,
+          "LP": 6,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 104,
+          "": ""
+        },
+        {
+          "Ingrediente": "Pasta lasgna",
+          "Cantidad": "40 g",
+          "PS": 3.8,
+          "LP": 0.2,
+          "HC": 29.2,
+          "HCsimples": "",
+          "Kcal totales": 130
+        },
+        {
+          "Platillo": "Queso mozzarella",
+          "Cantidad": "28 g",
+          "PS": 6.2,
+          "LP": 6.2,
+          "HC": 0.6,
+          "HCsimples": "",
+          "Kcal totales": 84
+        },
+        {
+          "Ingrediente": "Queso parmesano",
+          "Cantidad": "10 g",
+          "PS": 3.7,
+          "LP": 2.7,
+          "HC": 0.5,
+          "HCsimples": "",
+          "Kcal totales": 41
+        },
+        {
+          "Ingrediente": "Pure de tomate",
+          "Cantidad": "45 g",
+          "PS": 1,
+          "LP": 0.1,
+          "HC": 5.6,
+          "HCsimples": "",
+          "Kcal totales": 23
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 382,
+      "": ""
+    },
+    {
+      "Platillo": "Muffin",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Vainilla",
+          "Cantidad": "1 pza",
+          "PS": 8.5,
+          "LP": 10,
+          "HC": 54,
+          "HCsimples": "",
+          "Kcal totales": 339,
+          "": ""
+        },
+        {
+          "Ingrediente": "Platano",
+          "Cantidad": "",
+          "PS": 6.6,
+          "LP": 9.3,
+          "HC": 57,
+          "HCsimples": "",
+          "Kcal totales": 338
+        },
+        {
+          "Ingrediente": "Blueberry",
+          "Cantidad": "1 pza",
+          "PS": 5.2,
+          "LP": 18,
+          "HC": 60,
+          "HCsimples": "",
+          "Kcal totales": 423
+        },
+        {
+          "Platillo": "Pan Integral",
+          "Cantidad": "1 pza",
+          "PS": 7.8,
+          "LP": 8.4,
+          "HC": 54,
+          "HCsimples": "",
+          "Kcal totales": 322
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 1422,
+      "": ""
+    },
+    {
+      "Platillo": "Filete de res",
+      "Marca": "",
+      "Ingredientes": "carne de res",
+      "Cantidad": "100 g",
+      "PS": 27.29,
+      "LP": 0,
+      "HC": 15,
+      "HCsimples": "",
+      "Kcal totales": 252,
+      "": ""
+    },
+    {
+      "Platillo": "Costilla de cerdo en salsa guajillo",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "2 pzas",
+      "PS": 22,
+      "LP": 20,
+      "HC": 2,
+      "HCsimples": "",
+      "Kcal totales": 282.5,
+      "": ""
+    },
+    {
+      "Platillo": "Carne con salsas ligeras",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza (100 g)",
+      "PS": 21,
+      "LP": 20,
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 270,
+      "": ""
+    },
+    {
+      "Platillo": "Bistec a la mexicana",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "3/4 tza (100 g)",
+      "PS": 20,
+      "LP": 15,
+      "HC": 6,
+      "HCsimples": "",
+      "Kcal totales": 247,
+      "": ""
+    },
+    {
+      "Platillo": "Bistec de res en salsa pasilla",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 18.5,
+      "LP": 25,
+      "HC": 12,
+      "HCsimples": "",
+      "Kcal totales": 352,
+      "": ""
+    },
+    {
+      "Platillo": "Res en adobo",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "3/4 tza (100 g)",
+      "PS": 18.5,
+      "LP": 25,
+      "HC": 12,
+      "HCsimples": "",
+      "Kcal totales": 352,
+      "": ""
+    },
+    {
+      "Platillo": "Ensalada Cesar con Pollo",
+      "Marca": "Wendy's",
+      "Ingredientes": "",
+      "Cantidad": "1 porcion (282 g)",
+      "PS": 27,
+      "LP": 5,
+      "HC": 9,
+      "HCsimples": 0,
+      "Kcal totales": 190,
+      "": ""
+    },
+    {
+      "Platillo": "Ensalada Cesar",
+      "Marca": "Costco",
+      "Ingredientes": "",
+      "Cantidad": "1 porci�n sin crutones",
+      "PS": 33,
+      "LP": 19,
+      "HC": 17,
+      "HCsimples": 0,
+      "Kcal totales": 340,
+      "": ""
+    },
+    {
+      "Platillo": "Ensalada Premium",
+      "Marca": "Eva",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 6,
+      "LP": 13,
+      "HC": 5,
+      "HCsimples": 1,
+      "Kcal totales": 170,
+      "": ""
+    },
+    {
+      "Platillo": "Ensalada Cesar",
+      "Marca": "Mr Lucky",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 2,
+      "LP": 7,
+      "HC": 11,
+      "HCsimples": 1,
+      "Kcal totales": 115,
+      "": ""
+    },
+    {
+      "Platillo": "Ensalada de  atun",
+      "Marca": "",
+      "Ingredientes": [
+        {
+          "Ingrediente": "Atun",
+          "Cantidad": "90 g",
+          "PS": 21,
+          "LP": 4.5,
+          "HC": 0,
+          "HCsimples": "",
+          "Kcal totales": 129
+        },
+        {
+          "Ingreidente": "Queso panela",
+          "Cantidad": "60 g",
+          "PS": 11.4,
+          "LP": 5.4,
+          "HC": 2.4,
+          "HCsimples": "",
+          "Kcal totales": 116
+        },
+        {
+          "Ingrediente": "Lechuga",
+          "Cantidad": "100 g",
+          "PS": 1.2,
+          "LP": 0.2,
+          "HC": 3.3,
+          "HCsimples": "",
+          "Kcal totales": 17
+        },
+        {
+          "Ingrediente": "Mayonesa",
+          "Cantidad": "10 g",
+          "PS": 0.2,
+          "LP": 7.2,
+          "HC": 0.4,
+          "HCsimples": "",
+          "Kcal totales": 34
+        },
+        {
+          "Ingrediente": "Cebolla",
+          "Marca": "",
+          "Ingredientes": "Cebolla",
+          "Cantidad": "1/4 taza",
+          "PS": 0.24,
+          "LP": 0.2,
+          "HC": 10.8,
+          "HCsimples": "",
+          "Kcal totales": 46
+        },
+        {
+          "Ingrediente": "Chile jalapeño",
+          "Cantidad": "2 pzas",
+          "PS": 1.5,
+          "LP": 0.3,
+          "HC": 0.1,
+          "HCsimples": "",
+          "Kcal totales": 7.6
+        },
+        {
+          "Ingreidente": "Jitomate Saladet",
+          "Cantidad": "1 pza",
+          "PS": 0.5,
+          "LP": 0.1,
+          "HC": 2.4,
+          "HCsimples": "",
+          "Kcal totales": 11
+        }
+      ],
+      "Cantidad": "",
+      "PS": "",
+      "LP": "",
+      "HC": "",
+      "HCsimples": "",
+      "Kcal totales": 360.6,
+      "": ""
+    },
+    {
+      "Platillo": "Dona",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1/3 pza",
+      "PS": 1,
+      "LP": 4.9,
+      "HC": 10.7,
+      "HCsimples": 3.6,
+      "Kcal totales": 90,
+      "": ""
+    },
+    {
+      "Platillo": "Dona azucarada",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1/3 pza",
+      "PS": 1,
+      "LP": 4.9,
+      "HC": 10.7,
+      "HCsimples": 3.6,
+      "Kcal totales": 90,
+      "": ""
+    },
+    {
+      "Platillo": "Dona glaseada de chocolate",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1/3 pza",
+      "PS": 1,
+      "LP": 6,
+      "HC": 10.3,
+      "HCsimples": 5,
+      "Kcal totales": 102,
+      "": ""
+    },
+    {
+      "Platillo": "Dona glaseada original",
+      "Marca": "Krispy Kreme",
+      "Ingredientes": "",
+      "Cantidad": "1 pza (49 g)",
+      "PS": 3,
+      "LP": 11,
+      "HC": 22,
+      "HCsimples": 10,
+      "Kcal totales": 190,
+      "": ""
+    },
+    {
+      "Platillo": "Dona glaseada de chocolate",
+      "Marca": "Krispy Kreme",
+      "Ingredientes": "",
+      "Cantidad": "1 pza (63 g)",
+      "PS": 3,
+      "LP": 11,
+      "HC": 33,
+      "HCsimples": 20,
+      "Kcal totales": 240,
+      "": ""
+    },
+    {
+      "Platillo": "Dona glaseada  (strawberry & sprinkles)",
+      "Marca": "Krispy Kreme",
+      "Ingredientes": "",
+      "Cantidad": "1 pza (66 g)",
+      "PS": 3,
+      "LP": 11,
+      "HC": 24,
+      "HCsimples": 11,
+      "Kcal totales": 210,
+      "": ""
+    },
+    {
+      "Platillo": "Dona de canela glaseada",
+      "Marca": "Krispy Kreme",
+      "Ingredientes": "",
+      "Cantidad": "1 pza(56 g)",
+      "PS": 3,
+      "LP": 11,
+      "HC": 29,
+      "HCsimples": 16,
+      "Kcal totales": 220,
+      "": ""
+    },
+    {
+      "Platillo": "Dona glaseada (chocolate & sprinkles)",
+      "Marca": "Krispy Kreme",
+      "Ingredientes": "",
+      "Cantidad": "1 pza(66 g)",
+      "PS": 3,
+      "LP": 11,
+      "HC": 36,
+      "HCsimples": 22,
+      "Kcal totales": 250,
+      "": ""
+    },
+    {
+      "Platillo": "Cuernito normal",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza mediana(60 g)",
+      "PS": 6.6,
+      "LP": 12,
+      "HC": 26.2,
+      "HCsimples": 232,
+      "Kcal totales": "",
+      "": ""
+    },
+    {
+      "Platillo": "Cuernito de manzana",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza mediana(60 g)",
+      "PS": 4.2,
+      "LP": 4.9,
+      "HC": 21.2,
+      "HCsimples": "",
+      "Kcal totales": 145.3,
+      "": ""
+    },
+    {
+      "Platillo": "Cuernito de queso",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza mediana (60 g)",
+      "PS": 5.2,
+      "LP": 4.8,
+      "HC": 28.6,
+      "HCsimples": 6.2,
+      "Kcal totales": 236,
+      "": ""
+    },
+    {
+      "Platillo": "Cuernito",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza (60 g)",
+      "PS": 6.6,
+      "LP": 12,
+      "HC": 25.2,
+      "HCsimples": 6.4,
+      "Kcal totales": 232,
+      "": ""
+    },
+    {
+      "Platillo": "Cuernito de manzana",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza (60 g)",
+      "PS": 4.2,
+      "LP": 4.9,
+      "HC": 21.2,
+      "HCsimples": "",
+      "Kcal totales": 145,
+      "": ""
+    },
+    {
+      "Platillo": "Cuernito de queso",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza (60 g)",
+      "PS": 5.2,
+      "LP": 12,
+      "HC": 26.8,
+      "HCsimples": 6.4,
+      "Kcal totales": 236,
+      "": ""
+    },
+    {
+      "Platillo": "Brownie casero",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1pza",
+      "PS": 1.5,
+      "LP": 7,
+      "HC": 12,
+      "HCsimples": "",
+      "Kcal totales": 112,
+      "": ""
+    },
+    {
+      "Platillo": "Brownie comercial",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza",
+      "PS": 2.8,
+      "LP": 9.2,
+      "HC": 35.8,
+      "HCsimples": "",
+      "Kcal totales": 228,
+      "": ""
+    },
+    {
+      "Platillo": "Pan bagel dulce",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza (46 g)",
+      "PS": 6.9,
+      "LP": 1.2,
+      "HC": 38.7,
+      "HCsimples": "",
+      "Kcal totales": 192,
+      "": ""
+    },
+    {
+      "Platillo": "Pan bagel integral",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza(25 g)",
+      "PS": 5,
+      "LP": 0.6,
+      "HC": 25,
+      "HCsimples": "",
+      "Kcal totales": 120,
+      "": ""
+    },
+    {
+      "Platillo": "Pan bagel salado",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 pza",
+      "PS": 5,
+      "LP": 0.8,
+      "HC": 25,
+      "HCsimples": "",
+      "Kcal totales": 128,
+      "": ""
+    },
+    {
+      "Platillo": "Arroz cocido",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1/4 tza (16 g)",
+      "PS": 1.1,
+      "LP": 0.1,
+      "HC": 13.3,
+      "HCsimples": "",
+      "Kcal totales": 60,
+      "": ""
+    },
+    {
+      "Platillo": "Arroz rojo",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 tza(195 g)",
+      "PS": 4.5,
+      "LP": 2.5,
+      "HC": 31,
+      "HCsimples": "",
+      "Kcal totales": 168,
+      "": ""
+    },
+    {
+      "Platillo": "Arroz con verduras",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 tza(195 g)",
+      "PS": 5,
+      "LP": 2.5,
+      "HC": 32,
+      "HCsimples": "",
+      "Kcal totales": 175,
+      "": ""
+    },
+    {
+      "Platillo": "Arroz a la jardinera",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 tza(195 g)",
+      "PS": 5,
+      "LP": 2.5,
+      "HC": 32,
+      "HCsimples": "",
+      "Kcal totales": 175,
+      "": ""
+    },
+    {
+      "Platillo": "Arroz a la mexicana",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 tza(195 g)",
+      "PS": 5,
+      "LP": 2.5,
+      "HC": 32,
+      "HCsimples": "",
+      "Kcal totales": 175,
+      "": ""
+    },
+    {
+      "Platillo": "Arroz con pollo al horno",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "1 tza (210 g)",
+      "PS": 11,
+      "LP": 12.5,
+      "HC": 30,
+      "HCsimples": "",
+      "Kcal totales": 282,
+      "": ""
+    },
+    {
+      "Platillo": "Alitas",
+      "Marca": "",
+      "Ingredientes": "",
+      "Cantidad": "100 g",
+      "PS": 18.3,
+      "LP": 15.9,
+      "HC": 0,
+      "HCsimples": "",
+      "Kcal totales": 217,
+      "": ""
+    },
+    {
+      "Platillo": "Alitas KFC",
+      "Marca": "KFC",
+      "Ingredientes": "",
+      "Cantidad": "(3 pzas)",
+      "PS": 15,
+      "LP": 15.3,
+      "HC": 11.1,
+      "HCsimples": "",
+      "Kcal totales": 243,
+      "": ""
+    },
+    {
+      "Platillo": "Alitas Burger King",
+      "Marca": "Burger King",
+      "Ingredientes": "",
+      "Cantidad": "",
+      "PS": 31,
+      "LP": 22,
+      "HC": 4,
+      "HCsimples": 1,
+      "Kcal totales": 333,
+      "": ""
+    },
+    {
+      "Platillo": "Alitas Wings original hot",
+      "Marca": "Wings",
+      "Ingredientes": "",
+      "Cantidad": "(3 pzas)",
+      "PS": 18,
+      "LP": 9,
+      "HC": 0,
+      "HCsimples": 0,
+      "Kcal totales": 150,
+      "": ""
+    },
+    {
+      "Platillo": "Alitas Wings lemon peper",
+      "Marca": "Wings",
+      "Ingredientes": "",
+      "Cantidad": "(3 pzas)",
+      "PS": 18,
+      "LP": 15,
+      "HC": 0,
+      "HCsimples": 0,
+      "Kcal totales": 210,
+      "": ""
+    }
+  ]
+}

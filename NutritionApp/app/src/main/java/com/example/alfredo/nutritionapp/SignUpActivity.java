@@ -139,7 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (dataUser.child("isVerified").getValue().toString().equals("unverified"))
                 {
 
-                   // Intent in = new Intent( SignUpActivity.this, ProfileBanda.class);
+                   // Intent in = new Intent( SignUpActivity.this, ProfileUser.class);
                    // in.putExtra("USER_KEY" , dataUser.child("userKey").getValue().toString());
                    // startActivity(in);
 

@@ -13,7 +13,6 @@ Button up;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         in = (Button)findViewById(R.id.in);
         up = (Button)findViewById(R.id.up);
 

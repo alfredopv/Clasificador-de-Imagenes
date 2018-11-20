@@ -14,7 +14,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,8 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     Button loginBtn;
     EditText userEmailEdit, userPasswordEdit;
     Button forgotPassword;
-    public static String KU;
-
     //String Fields
     String userEmailString, userPasswordString;
 
@@ -45,51 +42,28 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = (Button) findViewById(R.id.loginBtn);
         userEmailEdit = (EditText) findViewById(R.id.loginEmailEditText);
         userPasswordEdit = (EditText) findViewById(R.id.loginPassWordEditText);
+        //forgotPassword = (Button) findViewById(R.id.forgot);
 
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
         mAuth = FirebaseAuth.getInstance();
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+
+
+/*
+        //ON CLICK LISTENER
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+            public void onClick(View v) {
 
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                if (user != null)
-                {
-
-                    final String emailForVer = user.getEmail();
-
-                    mDatabaseRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-
-                           checkUserValidation(dataSnapshot, emailForVer);
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-
-                }else
-                {
-
-
-
-                }
-
+                Intent in = new Intent( LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(in);
 
             }
-        };
-
-
-
-
+        });
+        */
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,8 +71,6 @@ public class LoginActivity extends AppCompatActivity {
                 //Perform login operation
                 userEmailString = userEmailEdit.getText().toString().trim();
                 userPasswordString = userPasswordEdit.getText().toString().trim();
-                System.out.println(userEmailString);
-                System.out.println(userPasswordString);
 
                 if(!TextUtils.isEmpty(userEmailString) && !TextUtils.isEmpty(userPasswordString))
                 {
@@ -114,9 +86,9 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                                    //  checkUserValidation(dataSnapshot, userEmailString);
+                                        checkUserValidation(dataSnapshot, userEmailString);}
 
-                                    }
+
 
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
@@ -151,25 +123,28 @@ public class LoginActivity extends AppCompatActivity {
         {
 
             DataSnapshot dataUser = (DataSnapshot) iterator.next();
+            if(emailForVer != null && !emailForVer.isEmpty() &&
+                    dataUser.child("emailUser").getValue()!= null) {
+                if (dataUser.child("emailUser").getValue().toString().equals(emailForVer)) {
 
-            if( dataUser.child("emailUser").getValue().toString().equals(emailForVer))
-            {
+                    if (dataUser.child("isVerified").getValue().toString().equals("unverified")) {
+                        KeyUser keyUser = new KeyUser();
+                        keyUser.KU = dataUser.child("userKey").getValue().toString();
+                        Intent in = new Intent(LoginActivity.this, ProfileUser.class);
+                        in.putExtra("USER_KEY", dataUser.child("userKey").getValue().toString());
 
-                    KU = dataUser.child("userKey").getValue().toString();
-                if (dataUser.child("isVerified").getValue().toString().equals("unverified"))
-                {
-                    Intent in = new Intent( LoginActivity.this, MainActivity.class);
-                   in.putExtra("USER_KEY" , dataUser.child("userKey").getValue().toString());
+                        startActivity(in);
+                        finish();
+                    } else {
+                        KeyUser keyUser = new KeyUser();
 
-                    startActivity(in);
+                        keyUser.KU = dataUser.child("userKey").getValue().toString();
+                        keyUser.start();
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
+                    }
 
-                }else
-                {
-
-                    System.out.println("entre");
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
-
             }
 
         }
@@ -178,17 +153,5 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        mAuth.addAuthStateListener(mAuthListener);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        mAuth.removeAuthStateListener(mAuthListener);
-    }
 }
