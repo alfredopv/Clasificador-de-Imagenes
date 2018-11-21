@@ -19,39 +19,39 @@
             android:layout_height="58dp"
             android:font="@font/ubuntu_mono"
             android:fontFamily="@font/ubuntu_mono"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30sp" />
+            android:textColor="@color/fui_bgFacebook"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/kcal_a"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:font="@font/ubuntu_mono"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/ps_a"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:font="@font/ubuntu_mono"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/lp_a"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:font="@font/ubuntu_mono"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/hc_a"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:font="@font/ubuntu_mono"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
 

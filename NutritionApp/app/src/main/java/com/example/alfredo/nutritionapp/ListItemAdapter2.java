@@ -16,7 +16,7 @@ import java.util.List;
 
 class ListItemViewHolder2 extends RecyclerView.ViewHolder implements  View.OnClickListener,View.OnCreateContextMenuListener{
     ItemClickListener itemClickListener;
-    TextView HC_t, Kcal_t, LP_t,PS_t;
+    TextView HC_t, Kcal_t, LP_t,PS_t, Producto_t;
     ImageView imagelist;
 
 
@@ -26,7 +26,7 @@ class ListItemViewHolder2 extends RecyclerView.ViewHolder implements  View.OnCli
         super(itemView);
         itemView.setOnClickListener(this);
         itemView.setOnCreateContextMenuListener(this);
-
+        Producto_t = (TextView)itemView.findViewById(R.id.producto_a);
         Kcal_t = (TextView)itemView.findViewById(R.id.kcal_a);
         HC_t = (TextView)itemView.findViewById(R.id.hc_a);
         PS_t = (TextView)itemView.findViewById(R.id.ps_a);
@@ -82,6 +82,7 @@ public class ListItemAdapter2 extends RecyclerView.Adapter<ListItemViewHolder2>{
     public void onBindViewHolder(ListItemViewHolder2 holder, int position) {
 
         //Picasso.with(context).load(productList.get(position).getImgurl()).fit().into(holder.imagelist);
+        holder.Producto_t.setText(alimentoList.get(position).getProducto());
         holder.Kcal_t.setText("Calorias totales: "+alimentoList.get(position).getKcal());
         holder.LP_t.setText("LP: "+String.valueOf(alimentoList.get(position).getLP()));
         holder.PS_t.setText("PS : "+String.valueOf(alimentoList.get(position).getPS()));

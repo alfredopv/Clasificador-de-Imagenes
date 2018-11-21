@@ -132,8 +132,7 @@ public class EditPerfilActivity extends Activity {
                         }
 
                         Toast.makeText(EditPerfilActivity.this, "Informacion actualizada", Toast.LENGTH_LONG).show();
-                    mAuth.signOut();
-                    finish();
+
                     startActivity(new Intent(EditPerfilActivity.this, LoginActivity.class));
 
                     }

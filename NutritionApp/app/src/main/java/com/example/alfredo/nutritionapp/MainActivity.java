@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 mAuth.signOut();
                 finish();
-                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent( MainActivity.this,   HomeActivity.class);
                 startActivity(intent);
 

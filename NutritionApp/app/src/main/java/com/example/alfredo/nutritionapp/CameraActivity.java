@@ -8,9 +8,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import dmax.dialog.SpotsDialog;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.services.vision.v1.Vision;
+import com.google.api.services.vision.v1.VisionRequestInitializer;
+import com.google.api.services.vision.v1.model.AnnotateImageRequest;
+import com.google.api.services.vision.v1.model.AnnotateImageResponse;
+import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest;
+import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
+import com.google.api.services.vision.v1.model.ColorInfo;
+import com.google.api.services.vision.v1.model.DominantColorsAnnotation;
+import com.google.api.services.vision.v1.model.EntityAnnotation;
+import com.google.api.services.vision.v1.model.Feature;
+import com.google.api.services.vision.v1.model.Image;
+import com.google.api.services.vision.v1.model.ImageProperties;
+import com.google.api.services.vision.v1.model.SafeSearchAnnotation;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -23,6 +45,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +62,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.api.services.vision.v1.model.Image;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -49,27 +73,35 @@ import com.google.gson.JsonObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import static android.content.ContentValues.TAG;
 
-
-public class CameraActivity extends Activity {
+public class CameraActivity extends Activity   {
     FirebaseFirestore db;
     RecyclerView.LayoutManager layoutManager;
-    private static final int CAMERA_REQUEST = 1888;
-    private ImageView imageView;
+    private static final int CAMERA_REQUEST_CODE= 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     public static double Kcal_t,PS_t, HC_t, LP_t;
     public static String cantidad;
+    private static final int RECORD_REQUEST_CODE = 101;
+    private static final String CLOUD_VISION_API_KEY = "AIzaSyDIeGAhrjKV2vSHgdbxHc4dzo5dG_k1uMU";
     Spinner spinner;
-    String URL="https://api.myjson.com/bins/al3pi";
+    String URL="https://api.myjson.com/bins/704ym";
     ArrayList<String> foodName;
     ArrayList<JSONObject> objects;
-    String detectado ="Ensalada";
+    String detectado ="";
     String platillo = "Platillo";
     ArrayList<Ingrediente> ingredientes;
     RecyclerView listItem;
@@ -79,6 +111,18 @@ public class CameraActivity extends Activity {
     DatabaseReference mDataRef;
     Button saveBtn;
     FirebaseAuth mAuth;
+    @BindView(R.id.takePicture)
+    Button takePicture;
+
+    @BindView(R.id.imageView)
+    ImageView imageView;
+
+
+    private Feature feature;
+    private Bitmap bitmap;
+    private String[] visionAPI = new String[]{"LANDMARK_DETECTION", "LOGO_DETECTION", "SAFE_SEARCH_DETECTION", "IMAGE_PROPERTIES", "LABEL_DETECTION"};
+
+    private String api = visionAPI[4];
 
 
 
@@ -101,6 +145,21 @@ public class CameraActivity extends Activity {
         t_lp = (TextView) findViewById(R.id.text_lp);
         t_ps = (TextView)findViewById(R.id.text_ps);
         Button saveBtn = (Button)findViewById(R.id.saveBtn2);
+        ButterKnife.bind(this);
+
+        feature = new Feature();
+        feature.setType(visionAPI[4]);
+        feature.setMaxResults(1);
+        imageView.setImageResource(R.drawable.cameraicon);
+
+
+
+        takePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takePictureFromCamera();
+            }
+        });
 
 
 
@@ -109,8 +168,7 @@ public class CameraActivity extends Activity {
         listItem.setLayoutManager(layoutManager);
 
 
-        this.imageView = (ImageView)this.findViewById(R.id.imageView1);
-        Button photoButton = (Button) this.findViewById(R.id.button1);
+
          spinner = findViewById(R.id.spinner1);
        // String[] items = new String[]{"1", "2", "three"};
         loadSpinnerData(URL);
@@ -168,24 +226,26 @@ public class CameraActivity extends Activity {
                                     for(int b=0; b<ingarray.length();b++){
                                         JSONObject ingobj = ingarray.getJSONObject(b);
                                         Ingrediente ing = new Ingrediente();
-                                        System.out.println("Ing: "+ ing.nombre);
+                                        //System.out.println("Ing: "+ ing.nombre);
                                         ing.nombre = ingobj.getString("Ingrediente");
                                         ing.Kcal = ingobj.getDouble("Kcal totales");
                                         ing.Cantidad = ingobj.getString("Cantidad");
                                         ing.PS = ingobj.getDouble("PS");
                                         ing.HC = ingobj.getDouble("HC");
+                                        System.out.println("HSE: "+ing.HC);
                                         ing.LP = ingobj.getDouble("LP");
+                                        //BigDecimal bigkcal = new BigDecimal(Kcal_t, MathContext.DECIMAL64);
                                         Kcal_t+= Math.round(ing.Kcal * 100.0) / 100.0;
                                         PS_t+= Math.round(ing.PS * 100.0) / 100.0;
                                         HC_t+=Math.round(ing.HC * 100.0) / 100.0;
-                                        System.out.println("kcalt: "+PS_t);
-                                        LP_t+= Math.round(ing.LP * 100.0) / 100.0;
+                                        LP_t+= Math.floor(ing.LP * 100.0) / 100.0;
+                                        System.out.println("LEPE: "+LP_t);
                                         ingredientes.add(ing);
                                     }
-                                    t_kcal.setText("Kcal : "+Kcal_t);
-                                    t_ps.setText("PS : "+PS_t);
+                                    t_kcal.setText("Kcal : "+Math.round(Kcal_t*100.0)/100.0);
+                                    t_ps.setText("PS : "+round(PS_t,2));
                                     t_hc.setText("HC : "+HC_t);
-                                    t_lp.setText("LP : "+LP_t);
+                                    t_lp.setText("LP : "+round(LP_t,2));
                                     t_marca.setText("Hecho en casa");
                                     cantidad = "-";
 
@@ -198,9 +258,9 @@ public class CameraActivity extends Activity {
                                     HC_t = objects.get(x).getDouble("HC");
                                     LP_t = objects.get(x).getDouble("LP");
                                     t_kcal.setText("Kcal : "+ Kcal_t);
-                                    t_ps.setText("PS : "+ PS_t);
+                                    t_ps.setText("PS : "+ round(PS_t,2));
                                     t_hc.setText("HC : "+ HC_t);
-                                    t_lp.setText("LP : "+LP_t);
+                                    t_lp.setText("LP : "+round(LP_t,2));
                                     cantidad = objects.get(x).getString("Cantidad");
                                     if(objects.get(x).getString("Marca") != null)
                                     t_marca.setText(objects.get(x).getString("Marca"));
@@ -219,44 +279,12 @@ public class CameraActivity extends Activity {
             }
         });
 
-        photoButton.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                if (checkSelfPermission(Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA},
-                            MY_CAMERA_PERMISSION_CODE);
-                } else {
-                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, CAMERA_REQUEST);
-                }
-            }
-        });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == MY_CAMERA_PERMISSION_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
-                Intent cameraIntent = new
-                        Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
-            } else {
-                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
-            }
 
-        }
-    }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            imageView.setImageBitmap(photo);
-        }
-    }
     private void loadSpinnerData(String url) {
+        foodName.clear();
         RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -269,9 +297,13 @@ public class CameraActivity extends Activity {
                             JSONObject jsonObject1=jsonArray.getJSONObject(i);
                             objects.add(jsonObject1);
                             String platillo =jsonObject1.getString("Platillo");
-                            System.out.println("platillo :"+jsonObject1);
+                            //System.out.println("platillo :"+jsonObject1);
                             System.out.println("platillo :"+platillo);
-                            if(platillo!=null &&platillo.contains(detectado)) {
+                            System.out.println("detected :"+detectado);
+                            System.out.println(platillo.contains(detectado));
+
+                            if(platillo!=null && platillo.contains(detectado)) {
+                                System.out.println("entre");
                                 foodName.add(platillo);
                             }
                         }
@@ -303,10 +335,14 @@ public class CameraActivity extends Activity {
         Ingrediente x = new Ingrediente();
         if(item.getTitle().equals("Añadir porcion"))
              x = ingredientes.get(item.getOrder());
-            Kcal_t+= x.Kcal;
+            Kcal_t+=  x.Kcal;
+            Kcal_t = round(Kcal_t,2);
             PS_t+= x.PS;
+            PS_t = round(PS_t,2);
             HC_t+=x.HC;
+            HC_t = round(HC_t,2);
             LP_t+= x.LP;
+            LP_t = round(LP_t,2);
         t_kcal.setText("Kcal : "+ Kcal_t);
         t_ps.setText("PS : "+ PS_t);
         t_hc.setText("HC : "+ HC_t);
@@ -315,6 +351,174 @@ public class CameraActivity extends Activity {
         return super.onContextItemSelected(item);
 
     }
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (checkPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            takePicture.setVisibility(View.VISIBLE);
+        } else {
+            takePicture.setVisibility(View.INVISIBLE);
+            makeRequest(Manifest.permission.CAMERA);
+        }
+    }
+
+    private int checkPermission(String permission) {
+        return ContextCompat.checkSelfPermission(this, permission);
+    }
+
+    private void makeRequest(String permission) {
+        ActivityCompat.requestPermissions(this, new String[]{permission}, RECORD_REQUEST_CODE);
+    }
+
+    public void takePictureFromCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, CAMERA_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
+            bitmap = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(bitmap);
+            callCloudVision(bitmap, feature);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (requestCode == RECORD_REQUEST_CODE) {
+            if (grantResults.length == 0 && grantResults[0] == PackageManager.PERMISSION_DENIED
+                    && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                finish();
+            } else {
+                takePicture.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    private void callCloudVision(final Bitmap bitmap, final Feature feature) {
+        final List<Feature> featureList = new ArrayList<>();
+        featureList.add(feature);
+
+        final List<AnnotateImageRequest> annotateImageRequests = new ArrayList<>();
+
+        AnnotateImageRequest annotateImageReq = new AnnotateImageRequest();
+        annotateImageReq.setFeatures(featureList);
+        annotateImageReq.setImage(getImageEncodeImage(bitmap));
+        annotateImageRequests.add(annotateImageReq);
+
+
+        new AsyncTask<Object, Void, String>() {
+            @Override
+            protected String doInBackground(Object... params) {
+                try {
+
+                    HttpTransport httpTransport = AndroidHttp.newCompatibleTransport();
+                    JsonFactory jsonFactory = GsonFactory.getDefaultInstance();
+
+                    VisionRequestInitializer requestInitializer = new VisionRequestInitializer(CLOUD_VISION_API_KEY);
+
+                    Vision.Builder builder = new Vision.Builder(httpTransport, jsonFactory, null);
+                    builder.setVisionRequestInitializer(requestInitializer);
+
+                    Vision vision = builder.build();
+
+                    BatchAnnotateImagesRequest batchAnnotateImagesRequest = new BatchAnnotateImagesRequest();
+                    batchAnnotateImagesRequest.setRequests(annotateImageRequests);
+
+                    Vision.Images.Annotate annotateRequest = vision.images().annotate(batchAnnotateImagesRequest);
+                    annotateRequest.setDisableGZipContent(true);
+                    BatchAnnotateImagesResponse response = annotateRequest.execute();
+                    return convertResponseToString(response);
+                } catch (GoogleJsonResponseException e) {
+                    Log.d(TAG, "failed to make API request because " + e.getContent());
+                } catch (IOException e) {
+                    Log.d(TAG, "failed to make API request because of other IOException " + e.getMessage());
+                }
+                return "Cloud Vision API request failed. Check logs for details.";
+            }
+
+            protected void onPostExecute(String result) {
+                detectado =  (detectado.substring(0, 1).toUpperCase() + detectado.substring(1)).trim();
+                if(detectado.equals("Hamburger")){
+                    detectado = "Hamburguesa";
+                }
+                if(detectado.equals("Popcorn")){
+                    detectado = "Palomitas";
+                }
+                Toast.makeText(getApplicationContext(),"Detectado: "+detectado,Toast.LENGTH_LONG).show();
+
+            }
+        }.execute();
+    }
+
+    @NonNull
+    private Image getImageEncodeImage(Bitmap bitmap) {
+        Image base64EncodedImage = new Image();
+        // Convert the bitmap to a JPEG
+        // Just in case it's a format that Android understands but Cloud Vision
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
+        byte[] imageBytes = byteArrayOutputStream.toByteArray();
+
+        // Base64 encode the JPEG
+        base64EncodedImage.encodeContent(imageBytes);
+        return base64EncodedImage;
+    }
+
+    private String convertResponseToString(BatchAnnotateImagesResponse response) {
+
+        AnnotateImageResponse imageResponses = response.getResponses().get(0);
+
+        List<EntityAnnotation> entityAnnotations;
+
+        String message = "";
+
+                entityAnnotations = imageResponses.getLabelAnnotations();
+                message = formatAnnotation(entityAnnotations);
+
+        return message;
+    }
+
+
+    private String formatAnnotation(List<EntityAnnotation> entityAnnotation) {
+        String message = "";
+
+        if (entityAnnotation != null) {
+            for (EntityAnnotation entity : entityAnnotation) {
+                message = message + entity.getDescription();
+                message += "\n";
+            }
+        } else {
+            message = "Nothing Found";
+        }
+        detectado = (message.substring(0, 1).toUpperCase() + message.substring(1)).trim();
+        if(detectado.equals("Hamburger")){
+            detectado = "Hamburguesa";
+        }
+        if(detectado.equals("Popcorn")){
+            detectado = "Palomitas";
+        }
+
+        loadSpinnerData(URL);
+        return message;
+    }
+
+
+
+
+
+
+
+
 
 
 

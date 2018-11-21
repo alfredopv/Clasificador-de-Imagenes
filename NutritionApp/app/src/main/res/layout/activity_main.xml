@@ -99,7 +99,7 @@
             android:fontFamily="monospace"
             android:src="@drawable/common_full_open_on_phone"
             android:text="Logout"
-            android:textColor="@color/gray"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
     </LinearLayout>

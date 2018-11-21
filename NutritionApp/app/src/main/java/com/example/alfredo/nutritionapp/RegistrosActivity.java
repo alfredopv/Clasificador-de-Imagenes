@@ -47,8 +47,9 @@ public class RegistrosActivity extends Activity {
     RecyclerView.LayoutManager layoutManager;
     FloatingActionButton fab;
     public TextView  PS_t,LP_t,HC_t,Kcal_t;
-    TextView kcal_h, hc_h,lp_h,ps_h;
+    TextView kcal_h, hc_h,lp_h,ps_h,producto_h;
     public double t_PS,t_LP, t_HC, t_Kcal;
+    public String t_Producto;
     public boolean isUpdate = false;
     public String idUpdate = "";
     ListItemAdapter2 adapter;
@@ -73,6 +74,8 @@ public class RegistrosActivity extends Activity {
         hc_h = (TextView)findViewById(R.id.HC_t);
         ps_h = (TextView)findViewById(R.id.PS_t);
         lp_h = (TextView)findViewById(R.id.LP_t);
+        producto_h = (TextView)findViewById(R.id.producto_a);
+
         listItem = (RecyclerView)findViewById(R.id.listTodo3);
         listItem.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -184,10 +187,10 @@ public class RegistrosActivity extends Activity {
                             alimentoList.add(alimento);
                         }
                         }
-                        kcal_h.setText("Calorias totales: "+t_Kcal);
-                        lp_h.setText("LP: "+t_LP);
-                        ps_h.setText("PS : "+t_PS);
-                        hc_h.setText("HC : "+t_HC);
+                        kcal_h.setText("Calorias totales: "+Math.round(t_Kcal*100.0)/100.0);
+                        lp_h.setText("LP: "+Math.round(t_LP*100.0)/100.0);
+                        ps_h.setText("PS : "+Math.round(t_PS*100.0)/100.0);
+                        hc_h.setText("HC : "+Math.round(t_HC*100.0)/100.0);
                         Context context = RegistrosActivity.this;
                         adapter = new ListItemAdapter2(RegistrosActivity.this, alimentoList, context);
                         listItem.setAdapter(adapter);

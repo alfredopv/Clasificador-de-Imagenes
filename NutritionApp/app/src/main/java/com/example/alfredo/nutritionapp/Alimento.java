@@ -47,7 +47,9 @@ public double PS, LP, HC,Kcal;
         return HC;
     }
 
-
+    public String getProducto() {
+        return Producto;
+    }
 }
 
 
