@@ -7,6 +7,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -69,16 +70,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.JsonObject;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -86,15 +88,18 @@ import java.util.Map;
 import java.util.UUID;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import org.tensorflow.lite.Interpreter;
+
 import static android.content.ContentValues.TAG;
 
 public class CameraActivity extends Activity   {
     FirebaseFirestore db;
     RecyclerView.LayoutManager layoutManager;
     private static final int CAMERA_REQUEST_CODE= 1888;
+    private static final String MODEL_PATH = "model2.lite";
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     public static double Kcal_t,PS_t, HC_t, LP_t;
-    public static String cantidad;
+    public static String cantidad, Cantidad_t;
     private static final int RECORD_REQUEST_CODE = 101;
     private static final String CLOUD_VISION_API_KEY = "AIzaSyDIeGAhrjKV2vSHgdbxHc4dzo5dG_k1uMU";
     Spinner spinner;
@@ -106,8 +111,10 @@ public class CameraActivity extends Activity   {
     ArrayList<Ingrediente> ingredientes;
     RecyclerView listItem;
     ListItemAdapter adapter;
+    String modelFile="model2.lite";
+    Interpreter tflite;
     AlertDialog dialog;
-    TextView t_kcal, t_marca, t_lp, t_hc, t_ps;
+    TextView t_kcal, t_marca, t_lp, t_hc, t_ps, t_cantidad;
     DatabaseReference mDataRef;
     Button saveBtn;
     FirebaseAuth mAuth;
@@ -137,6 +144,7 @@ public class CameraActivity extends Activity   {
         foodName=new ArrayList<>();
         objects=new ArrayList<>();
         ingredientes= new ArrayList<>();
+
         dialog  = new SpotsDialog(this);
         listItem = (RecyclerView)findViewById(R.id.listTodo2);
         t_hc = (TextView) findViewById(R.id.text_hc);
@@ -144,6 +152,7 @@ public class CameraActivity extends Activity   {
         t_marca = (TextView) findViewById(R.id.text_marca);
         t_lp = (TextView) findViewById(R.id.text_lp);
         t_ps = (TextView)findViewById(R.id.text_ps);
+        t_cantidad = (TextView)findViewById(R.id.text_cantidad);
         Button saveBtn = (Button)findViewById(R.id.saveBtn2);
         ButterKnife.bind(this);
 
@@ -151,7 +160,11 @@ public class CameraActivity extends Activity   {
         feature.setType(visionAPI[4]);
         feature.setMaxResults(1);
         imageView.setImageResource(R.drawable.cameraicon);
-
+        try {
+            tflite=new Interpreter(loadModelFile(CameraActivity.this));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         takePicture.setOnClickListener(new View.OnClickListener() {
@@ -247,6 +260,7 @@ public class CameraActivity extends Activity   {
                                     t_hc.setText("HC : "+HC_t);
                                     t_lp.setText("LP : "+round(LP_t,2));
                                     t_marca.setText("Hecho en casa");
+                                    t_cantidad.setText("Cantidad: -");
                                     cantidad = "-";
 
                                     loadData();
@@ -257,11 +271,14 @@ public class CameraActivity extends Activity   {
                                     PS_t = objects.get(x).getDouble("PS");
                                     HC_t = objects.get(x).getDouble("HC");
                                     LP_t = objects.get(x).getDouble("LP");
+                                    Cantidad_t = objects.get(x).getString("Cantidad");
+
                                     t_kcal.setText("Kcal : "+ Kcal_t);
                                     t_ps.setText("PS : "+ round(PS_t,2));
                                     t_hc.setText("HC : "+ HC_t);
                                     t_lp.setText("LP : "+round(LP_t,2));
                                     cantidad = objects.get(x).getString("Cantidad");
+                                    t_cantidad.setText("Cantidad : "+cantidad);
                                     if(objects.get(x).getString("Marca") != null)
                                     t_marca.setText(objects.get(x).getString("Marca"));
                                 }
@@ -512,6 +529,14 @@ public class CameraActivity extends Activity   {
         return message;
     }
 
+    private MappedByteBuffer loadModelFile(Activity activity) throws IOException {
+        AssetFileDescriptor fileDescriptor = activity.getAssets().openFd("model2.tfile");
+        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel = inputStream.getChannel();
+        long startOffset = fileDescriptor.getStartOffset();
+        long declaredLength = fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
+    }
 
 
 
