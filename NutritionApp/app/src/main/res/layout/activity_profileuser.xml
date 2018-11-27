@@ -82,7 +82,7 @@
                 android:ems="10"
                 android:hint="Ingresa tu nombre"
                 android:inputType="text"
-                android:textColor="@color/gray" />
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/userEdadEditText"
@@ -91,7 +91,7 @@
                 android:ems="10"
                 android:hint="Ingresa tu edad"
                 android:inputType="number"
-                android:textColor="@color/gray" />
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/userpeso"
@@ -100,7 +100,7 @@
                 android:ems="10"
                 android:hint="Ingresa peso en kg"
                 android:inputType="none"
-                android:textColor="@color/gray" />
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/userestatura"
@@ -109,7 +109,7 @@
                 android:ems="10"
                 android:hint="Ingresa tu estatura"
                 android:inputType="none"
-                android:textColor="@color/gray" />
+                android:textColor="@color/white" />
 
             <Spinner
                 android:id="@+id/spinner"

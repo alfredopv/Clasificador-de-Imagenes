@@ -1,13 +1,15 @@
 package com.example.alfredo.nutritionapp;
 
 import android.Manifest;
+import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.client.util.DateTime;
 import com.google.api.services.vision.v1.Vision;
 import com.google.api.services.vision.v1.VisionRequestInitializer;
 import com.google.api.services.vision.v1.model.AnnotateImageRequest;
@@ -70,17 +73,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.JsonObject;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -88,18 +91,23 @@ import java.util.Map;
 import java.util.UUID;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import org.tensorflow.lite.Interpreter;
-
 import static android.content.ContentValues.TAG;
 
 public class CameraActivity extends Activity   {
     FirebaseFirestore db;
     RecyclerView.LayoutManager layoutManager;
+    /** Max preview width that is guaranteed by Camera2 API */
+    /** Max preview height that is guaranteed by Camera2 API */
+    private static final int INPUT_SIZE = 128;
     private static final int CAMERA_REQUEST_CODE= 1888;
-    private static final String MODEL_PATH = "model2.lite";
+    private static final String MODEL_PATH = "modelo3.tflite";
+    private static final String LABEL_PATH = "labels.txt";
+    //private ImageClassifier classifier;
+    private Classifier classifier;
+    private Executor executor = Executors.newSingleThreadExecutor();
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
     public static double Kcal_t,PS_t, HC_t, LP_t;
-    public static String cantidad, Cantidad_t;
+    public static String cantidad;
     private static final int RECORD_REQUEST_CODE = 101;
     private static final String CLOUD_VISION_API_KEY = "AIzaSyDIeGAhrjKV2vSHgdbxHc4dzo5dG_k1uMU";
     Spinner spinner;
@@ -111,13 +119,12 @@ public class CameraActivity extends Activity   {
     ArrayList<Ingrediente> ingredientes;
     RecyclerView listItem;
     ListItemAdapter adapter;
-    String modelFile="model2.lite";
-    Interpreter tflite;
     AlertDialog dialog;
-    TextView t_kcal, t_marca, t_lp, t_hc, t_ps, t_cantidad;
+    TextView t_kcal, t_marca, t_lp, t_hc, t_ps;
     DatabaseReference mDataRef;
     Button saveBtn;
     FirebaseAuth mAuth;
+    String textToShow ="";
     @BindView(R.id.takePicture)
     Button takePicture;
 
@@ -144,7 +151,6 @@ public class CameraActivity extends Activity   {
         foodName=new ArrayList<>();
         objects=new ArrayList<>();
         ingredientes= new ArrayList<>();
-
         dialog  = new SpotsDialog(this);
         listItem = (RecyclerView)findViewById(R.id.listTodo2);
         t_hc = (TextView) findViewById(R.id.text_hc);
@@ -152,19 +158,15 @@ public class CameraActivity extends Activity   {
         t_marca = (TextView) findViewById(R.id.text_marca);
         t_lp = (TextView) findViewById(R.id.text_lp);
         t_ps = (TextView)findViewById(R.id.text_ps);
-        t_cantidad = (TextView)findViewById(R.id.text_cantidad);
         Button saveBtn = (Button)findViewById(R.id.saveBtn2);
         ButterKnife.bind(this);
+        initTensorFlowAndLoadModel();
 
         feature = new Feature();
         feature.setType(visionAPI[4]);
         feature.setMaxResults(1);
         imageView.setImageResource(R.drawable.cameraicon);
-        try {
-            tflite=new Interpreter(loadModelFile(CameraActivity.this));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
 
         takePicture.setOnClickListener(new View.OnClickListener() {
@@ -200,6 +202,7 @@ public class CameraActivity extends Activity   {
                     todo.put("Marca",t_marca.getText().toString());
                     todo.put("userID",keyUser.KU);
                     todo.put("Cantidad",cantidad);
+                    todo.put("Fecha",LocalDateTime.now().toString());
                     todo.put("userUUID",currentFirebaseUser.getUid());
 
 
@@ -260,7 +263,6 @@ public class CameraActivity extends Activity   {
                                     t_hc.setText("HC : "+HC_t);
                                     t_lp.setText("LP : "+round(LP_t,2));
                                     t_marca.setText("Hecho en casa");
-                                    t_cantidad.setText("Cantidad: -");
                                     cantidad = "-";
 
                                     loadData();
@@ -271,14 +273,12 @@ public class CameraActivity extends Activity   {
                                     PS_t = objects.get(x).getDouble("PS");
                                     HC_t = objects.get(x).getDouble("HC");
                                     LP_t = objects.get(x).getDouble("LP");
-                                    Cantidad_t = objects.get(x).getString("Cantidad");
-
                                     t_kcal.setText("Kcal : "+ Kcal_t);
                                     t_ps.setText("PS : "+ round(PS_t,2));
                                     t_hc.setText("HC : "+ HC_t);
                                     t_lp.setText("LP : "+round(LP_t,2));
                                     cantidad = objects.get(x).getString("Cantidad");
-                                    t_cantidad.setText("Cantidad : "+cantidad);
+                                    Toast.makeText(getApplicationContext(),"Cantidad: "+cantidad,Toast.LENGTH_LONG).show();
                                     if(objects.get(x).getString("Marca") != null)
                                     t_marca.setText(objects.get(x).getString("Marca"));
                                 }
@@ -314,10 +314,6 @@ public class CameraActivity extends Activity   {
                             JSONObject jsonObject1=jsonArray.getJSONObject(i);
                             objects.add(jsonObject1);
                             String platillo =jsonObject1.getString("Platillo");
-                            //System.out.println("platillo :"+jsonObject1);
-                            System.out.println("platillo :"+platillo);
-                            System.out.println("detected :"+detectado);
-                            System.out.println(platillo.contains(detectado));
 
                             if(platillo!=null && platillo.contains(detectado)) {
                                 System.out.println("entre");
@@ -352,14 +348,14 @@ public class CameraActivity extends Activity   {
         Ingrediente x = new Ingrediente();
         if(item.getTitle().equals("Añadir porcion"))
              x = ingredientes.get(item.getOrder());
-            Kcal_t+=  x.Kcal;
-            Kcal_t = round(Kcal_t,2);
-            PS_t+= x.PS;
-            PS_t = round(PS_t,2);
-            HC_t+=x.HC;
-            HC_t = round(HC_t,2);
-            LP_t+= x.LP;
-            LP_t = round(LP_t,2);
+        Kcal_t+=  x.Kcal;
+        Kcal_t = round(Kcal_t,2);
+        PS_t+= x.PS;
+        PS_t = round(PS_t,2);
+        HC_t+=x.HC;
+        HC_t = round(HC_t,2);
+        LP_t+= x.LP;
+        LP_t = round(LP_t,2);
         t_kcal.setText("Kcal : "+ Kcal_t);
         t_ps.setText("PS : "+ PS_t);
         t_hc.setText("HC : "+ HC_t);
@@ -405,7 +401,19 @@ public class CameraActivity extends Activity   {
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == RESULT_OK) {
             bitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(bitmap);
-            callCloudVision(bitmap, feature);
+            bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false);
+
+            final List<Classifier.Recognition> results = classifier.recognizeImage(bitmap);
+            detectado = results.get(0).getTitle();
+            
+            detectado =  (detectado.substring(0, 1).toUpperCase() + detectado.substring(1)).trim();
+                Toast.makeText(getApplicationContext(),detectado,Toast.LENGTH_LONG).show();
+                loadSpinnerData(URL);
+
+
+            //callCloudVision(bitmap, feature);
+            //classifyFrame(bitmap);
+
         }
     }
 
@@ -465,12 +473,17 @@ public class CameraActivity extends Activity   {
 
             protected void onPostExecute(String result) {
                 detectado =  (detectado.substring(0, 1).toUpperCase() + detectado.substring(1)).trim();
+                /*
                 if(detectado.equals("Hamburger")){
                     detectado = "Hamburguesa";
+
+
                 }
                 if(detectado.equals("Popcorn")){
                     detectado = "Palomitas";
                 }
+                */
+                loadSpinnerData(URL);
                 Toast.makeText(getApplicationContext(),"Detectado: "+detectado,Toast.LENGTH_LONG).show();
 
             }
@@ -529,14 +542,52 @@ public class CameraActivity extends Activity   {
         return message;
     }
 
-    private MappedByteBuffer loadModelFile(Activity activity) throws IOException {
-        AssetFileDescriptor fileDescriptor = activity.getAssets().openFd("model2.tfile");
-        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
-        FileChannel fileChannel = inputStream.getChannel();
-        long startOffset = fileDescriptor.getStartOffset();
-        long declaredLength = fileDescriptor.getDeclaredLength();
-        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
+    private void classifyFrame(Bitmap bitmap) {
+        //Bitmap bitmap =
+          //      textureView.getBitmap(ImageClassifier.DIM_IMG_SIZE_X, ImageClassifier.DIM_IMG_SIZE_Y);
+        try {
+            //classifier = new ImageClassifier(CameraActivity.this);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to initialize an image classifier.");
+        }
+        Bitmap newbitmap = Bitmap.createScaledBitmap(bitmap, 224, 224, false);
+        System.out.println("bitmap: "+newbitmap);
+         //textToShow = classifier.classifyFrame(newbitmap);
+        newbitmap.recycle();
+        Toast.makeText(getApplicationContext(),textToShow,Toast.LENGTH_LONG).show();
+        System.out.println("MODELO:" + textToShow);
+
     }
+
+    private void initTensorFlowAndLoadModel() {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    classifier = TensorFlowImageClassifier.create(
+                            getAssets(),
+                            MODEL_PATH,
+                            LABEL_PATH,
+                            INPUT_SIZE);
+                } catch (final Exception e) {
+                    throw new RuntimeException("Error initializing TensorFlow!", e);
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                classifier.close();
+            }
+        });
+    }
+
+
 
 
 
